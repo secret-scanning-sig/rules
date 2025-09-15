@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+srcdir="$(cd "$(dirname "$0")" && pwd -P)"
+
+"${srcdir}/run" translate.py "$@"
