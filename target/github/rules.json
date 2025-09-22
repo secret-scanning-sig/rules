@@ -1,0 +1,14 @@
+{
+  "patterns": [
+    {
+      "secret_format": "ghp_[0-9A-Za-z]{36}",
+      "before_secret": "\\A|\\W",
+      "after_secret": "\\W|\\z"
+    },
+    {
+      "secret_format": "github_pat_\\w{82}",
+      "before_secret": "\\A|\\W",
+      "after_secret": "\\W|\\z"
+    }
+  ]
+}

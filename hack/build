@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+declare -A targets=(
+  [github]='json'
+  [gitleaks]='toml'
+  [kingfisher]='yaml'
+  [noseyparker]='yaml'
+  [trufflehog]='yaml'
+)
+
+ensure_empty() {
+  rm --preserve-root -rf "$1"
+  mkdir -p "$1"
+}
+
+# Compile sssig rules into a single file
+ensure_empty ./target/sssig
+./hack/compile > ./target/sssig/rules.yaml
+
+# Compile the rules to the other formats
+for target in "${!targets[@]}"
+do
+  echo -n "bulding target/${target}/rules.${targets["${target}"]}..."
+  ensure_empty "./target/${target}"
+  ./hack/translate/translate -t "${target}" ./target/sssig/rules.yaml > "./target/${target}/rules.${targets["${target}"]}"
+  echo 'done'
+done

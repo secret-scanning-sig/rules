@@ -1,0 +1,20 @@
+detectors:
+  - name: S3IGSE57RML77YEIXF5X
+    regex:
+      target: (?:\A|\W)(ghp_[0-9A-Za-z]{36})(?:\W|\z)
+    entropy: 2.0
+    verify:
+      - endpoint: https://api.github.com/user
+        headers:
+          - 'accept: application/vnd.github.v3+json'
+          - 'authorization: Bearer {{ target }}'
+  - name: S3IGA2DTZOHC3DRBHIJQ
+    regex:
+      target: (?:\A|\W)(github_pat_\w{82})(?:\W|\z)
+    entropy: 2.0
+    verify:
+      - endpoint: https://api.github.com/user
+        headers:
+          - 'accept: application/vnd.github.v3+json'
+          - 'authorization: Bearer {{ target }}'
+

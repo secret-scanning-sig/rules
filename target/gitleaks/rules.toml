@@ -1,0 +1,16 @@
+[[rules]]
+id = "S3IGSE57RML77YEIXF5X"
+description = "Personal access tokens are an alternative to using passwords for\nauthentication to GitHub when using the GitHub API or the command line.\n\nPersonal access tokens are intended to access GitHub resources on\nbehalf of yourself. To access resources on behalf of an organization,\nor for long-lived integrations, you should use a GitHub App. For more\ninformation, see About creating GitHub Apps.\n\nA token has the same capabilities to access resources and perform\nactions on those resources that the owner of the token has, and is\nfurther limited by any scopes or permissions granted to the token. A\ntoken cannot grant additional access capabilities to a user. For\nexample, a personal access token can be configured with an admin:org\nscope, but if the owner of the token is not an organization owner, the\ntoken will not give administrative access to the organization."
+regex = "(?:\\A|\\W)(ghp_[0-9A-Za-z]{36})(?:\\W|\\z)"
+entropy = 2.0
+tags = ["kind:github_personal_access_token", "confidence:high", "secret", "credential"]
+skipReport = false
+
+[[rules]]
+id = "S3IGA2DTZOHC3DRBHIJQ"
+description = "Personal access tokens are an alternative to using passwords for authentication to GitHub when using the GitHub API or the command line.\nPersonal access tokens are intended to access GitHub resources on behalf of yourself. To access resources on behalf of an organization, or for long-lived integrations, you should use a GitHub App. For more information, see About creating GitHub Apps.\nA token has the same capabilities to access resources and perform actions on those resources that the owner of the token has, and is further limited by any scopes or permissions granted to the token. A token cannot grant additional access capabilities to a user. For example, a personal access token can be configured with an admin:org scope, but if the owner of the token is not an organization owner, the token will not give administrative access to the organization."
+regex = "(?:\\A|\\W)(github_pat_\\w{82})(?:\\W|\\z)"
+entropy = 2.0
+tags = ["kind:github_fine_grained_personal_access_token", "confidence:high", "secret", "credential"]
+skipReport = false
+

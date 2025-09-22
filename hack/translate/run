@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# run python scripts in this project and make sure everything is built first
+set -euo pipefail
+srcdir="$(cd "$(dirname "$0")" && pwd -P)"
+
+# Make sure the package is built
+pushd "${srcdir}" &> /dev/null
+if ! make build &> "${PWD}/build.log"
+then
+  echo "[ERROR] Could not build translate." >&2
+  echo "[ERROR] See ${PWD}/build.log for details." >&2
+  exit 1
+fi
+popd &> /dev/null
+
+"${srcdir}/.venv/bin/python3" "${srcdir}/$1" "${@:2}"
