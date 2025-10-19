@@ -4,7 +4,7 @@
 
 static PyObject* hscheck_validate_pattern(PyObject *self, PyObject *args) {
   const char *pattern;
-  unsigned int flags = 0;
+  unsigned int flags = HS_FLAG_ALLOWEMPTY;
   unsigned int mode = HS_MODE_BLOCK;
   hs_database_t *db;
   hs_compile_error_t *compile_error;
